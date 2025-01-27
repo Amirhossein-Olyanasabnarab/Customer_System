@@ -12,7 +12,7 @@ public class RealCustomerUI extends AbstractCustomerUI
 
     @Override
     public Customer generateCustomer() {
-        return null;
+       return null;
     }
 
     @Override

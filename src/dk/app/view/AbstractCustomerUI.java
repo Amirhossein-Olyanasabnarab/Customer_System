@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public abstract class AbstractCustomerUI {
 
-    private final Scanner scanner;
+    protected final Scanner scanner;
 
     public AbstractCustomerUI(Scanner scanner) {
         this.scanner = scanner;
