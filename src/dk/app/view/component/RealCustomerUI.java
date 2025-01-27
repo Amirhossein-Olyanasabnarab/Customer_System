@@ -28,6 +28,20 @@ public class RealCustomerUI extends AbstractCustomerUI
 
     @Override
     public void editCustomer(Customer customer) {
+        RealCustomer realCustomer = (RealCustomer) customer;
+
+        System.out.println("Enter customer name:");
+        String customerName = scanner.nextLine();
+        System.out.println("Enter customer family:");
+        String customerFamily = scanner.nextLine();
+        System.out.println("Enter customer email:");
+        String customerEmail = scanner.nextLine();
+        System.out.println("Enter customer phone number:");
+        String customerPhoneNumber = scanner.nextLine();
+        realCustomer.setName(customerName);
+        realCustomer.setFamily(customerFamily);
+        realCustomer.setEmail(customerEmail);
+        realCustomer.setPhone(customerPhoneNumber);
 
     }
 }
