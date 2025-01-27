@@ -1,4 +1,4 @@
-package dk.app.view;
+package dk.app.view.component;
 
 import dk.app.model.Customer;
 

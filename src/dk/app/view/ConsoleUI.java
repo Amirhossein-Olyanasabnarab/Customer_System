@@ -4,8 +4,10 @@ import dk.app.model.Customer;
 import dk.app.model.LegalCustomer;
 import dk.app.model.RealCustomer;
 import dk.app.service.CustomerService;
+import dk.app.view.component.AbstractCustomerUI;
+import dk.app.view.component.LegalCustomerUI;
+import dk.app.view.component.RealCustomerUI;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -133,33 +135,16 @@ public class ConsoleUI implements AutoCloseable{
         System.out.println("Please enter your choice:");
         int choice = scanner.nextInt();
         scanner.nextLine();
+        AbstractCustomerUI customerUI = null;
         if (choice == 1) {
-            System.out.println("Please enter your customer name:");
-            String customerName = scanner.nextLine();
-            System.out.println("Please enter your customer family:");
-            String customerFamily = scanner.nextLine();
-            System.out.println("Please enter your customer email:");
-            String customerEmail = scanner.nextLine();
-            System.out.println("Please enter your customer phone number:");
-            String customerPhoneNumber = scanner.nextLine();
-            RealCustomer realCustomer = new RealCustomer(customerName, customerEmail, customerPhoneNumber);
-            realCustomer.setFamily(customerFamily);
-            customerService.addCustomer(realCustomer);
+            customerUI = new RealCustomerUI(scanner);
         }else if (choice == 2) {
-            System.out.println("Please enter your customer name:");
-            String customerName = scanner.nextLine();
-            System.out.println("Please enter your customer email:");
-            String customerEmail = scanner.nextLine();
-            System.out.println("Please enter your customer phone number:");
-            String customerPhoneNumber = scanner.nextLine();
-            System.out.println("Please enter your customer fax:");
-            String customerFax = scanner.nextLine();
-            LegalCustomer legalCustomer = new LegalCustomer(customerName, customerEmail, customerPhoneNumber);
-            legalCustomer.setFax(customerFax);
-            customerService.addCustomer(legalCustomer);
+            customerUI = new LegalCustomerUI(scanner);
         }else{
             System.out.println("Invalid option...... please try again");
         }
+        Customer customer = customerUI.generateCustomer();
+        customerService.addCustomer(customer);
     }
 
     public void printMenu(){
